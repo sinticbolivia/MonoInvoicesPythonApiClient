@@ -128,6 +128,82 @@ class ServicioSincronizacion(MonoInvoiceClient):
 
         return json_obj
 
+    def tipos_documentos_sector(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/sync-tipos-documentos-sector?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+        return json_obj
+
+    def actividades_document_sector(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/lista-actividades?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+        return json_obj
+
+    def tipos_habitacion(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/lista-tipos-habitacion?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+        return json_obj
+
+    def tipos_punto_venta(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/sync-tipos-punto-venta?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+    def tipos_facturas(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/sync-tipos-facturas?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+    def tipos_emision(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/sync-tipos-emision?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+    def tipos_eventos(self, sucursal: int = 0, puntoventa: int = 0):
+        endpoint = '{0}/invoices/siat/v2/sync-eventos?sucursal_id={1}&puntoventa_id={2}'.format(
+            self._base_url,
+            sucursal,
+            puntoventa
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
     def puntosventa(self, sucursal: int = 0):
         endpoint = '{0}/invoices/siat/v2/puntos-venta?sucursal_id={1}'.format(
             self._base_url,

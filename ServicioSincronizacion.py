@@ -173,6 +173,7 @@ class ServicioSincronizacion(MonoInvoiceClient):
         headers = self._get_headers()
         res = requests.get(endpoint, headers=headers)
         json_obj = res.json()
+        return json_obj
 
     def tipos_facturas(self, sucursal: int = 0, puntoventa: int = 0):
         endpoint = '{0}/invoices/siat/v2/sync-tipos-facturas?sucursal_id={1}&puntoventa_id={2}'.format(
@@ -183,6 +184,7 @@ class ServicioSincronizacion(MonoInvoiceClient):
         headers = self._get_headers()
         res = requests.get(endpoint, headers=headers)
         json_obj = res.json()
+        return json_obj
 
     def tipos_emision(self, sucursal: int = 0, puntoventa: int = 0):
         endpoint = '{0}/invoices/siat/v2/sync-tipos-emision?sucursal_id={1}&puntoventa_id={2}'.format(
@@ -193,6 +195,7 @@ class ServicioSincronizacion(MonoInvoiceClient):
         headers = self._get_headers()
         res = requests.get(endpoint, headers=headers)
         json_obj = res.json()
+        return json_obj
 
     def tipos_eventos(self, sucursal: int = 0, puntoventa: int = 0):
         endpoint = '{0}/invoices/siat/v2/sync-eventos?sucursal_id={1}&puntoventa_id={2}'.format(
@@ -203,6 +206,18 @@ class ServicioSincronizacion(MonoInvoiceClient):
         headers = self._get_headers()
         res = requests.get(endpoint, headers=headers)
         json_obj = res.json()
+        return json_obj
+
+    def sucursales(self):
+        endpoint = '{0}/invoices/siat/v2/branches'.format(
+            self._base_url,
+            sucursal,
+        )
+        headers = self._get_headers()
+        res = requests.get(endpoint, headers=headers)
+        json_obj = res.json()
+
+        return json_obj
 
     def puntosventa(self, sucursal: int = 0):
         endpoint = '{0}/invoices/siat/v2/puntos-venta?sucursal_id={1}'.format(

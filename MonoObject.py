@@ -1,4 +1,5 @@
 import json
+import copy
 
 
 class MonoObject:
@@ -14,8 +15,8 @@ class MonoObject:
             setattr(self, key, val)
 
     def to_dict(self) -> dict:
-
-        return self.__dict__
+        data = copy.deepcopy(self.__dict__)
+        return data
 
     def to_json(self):
         data = self.to_dict()

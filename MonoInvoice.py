@@ -1,9 +1,10 @@
 import requests
-
+from abc import ABC
 from . import Utils
+from .Config import Config
 
 
-class MonoInvoiceClient:
+class MonoInvoiceClient(ABC):
 
     def __init__(self):
         self._server = None
@@ -11,12 +12,12 @@ class MonoInvoiceClient:
         self._token = None
         self._config = None
 
-    def set_config(self, cfg):
+    def set_config(self, cfg: Config):
         self._config = cfg
         self.set_server()
         self.set_token(self._config.token)
 
-    def get_config(self):
+    def get_config(self) -> Config:
         return self._config
 
     def set_server(self, url: str = None):
@@ -42,8 +43,10 @@ class MonoInvoiceClient:
         self._token = token
 
     def is_token_expired(self):
-        return Utils.token_expired(self._token)
+        if self._token is None:
+            return True
 
+        return Utils.token_expired(self._token)
 
     def login(self):
         if self._config is None:
@@ -64,7 +67,7 @@ class MonoInvoiceClient:
         # print('STATUS CODE', res.status_code)
         if res.status_code != 200:
             raise Exception(data.get('error'))
-        print(data)
+        # print(data)
         if data.get('data', {}) is None or 'token' not in data.get('data', {}):
             raise Exception('SIAT CLIENT LOGIN ERROR: Token not found in response')
 

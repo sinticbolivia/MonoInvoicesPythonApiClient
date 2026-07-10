@@ -55,6 +55,12 @@ class ServicioFacturacion(MonoInvoiceClient):
 
         return res.json()
 
+    def get_xml(self, id: int):
+        endpoint = '{0}/invoices/siat/v2/invoices/{1}/xml'.format(self._base_url, id)
+        res = requests.get(endpoint, headers=self._get_headers())
+
+        return res.json()
+
     def get_facturas(self, pagina: int = 1):
         endpoint = '{0}/invoices/siat/v2/invoices?page={1}'.format(self._base_url, pagina)
         res = requests.get(endpoint, headers=self._get_headers())

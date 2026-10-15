@@ -1,14 +1,13 @@
 import os
 import json
-from odoo.addons.siat_client import constants
 from abc import ABC
 import copy
 
 
 class Config(ABC):
 
-    def __init__(self):
-        self._filename = '{0}/config.json'.format(constants.DATA_DIR)
+    def __init__(self, data_dir:str):
+        self._filename = '{0}/config.json'.format(data_dir)
         self.server = None
         self.username = None
         self.password = None

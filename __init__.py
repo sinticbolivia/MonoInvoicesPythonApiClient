@@ -5,4 +5,5 @@ from .MonoInvoice import MonoInvoiceClient
 from .MonoObject import MonoObject
 from .ServicioFacturacion import ServicioFacturacion
 from .ServicioSincronizacion import ServicioSincronizacion
+from .ServicioOperaciones import ServicioOperaciones
 from . import Utils

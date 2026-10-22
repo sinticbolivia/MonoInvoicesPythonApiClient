@@ -43,7 +43,7 @@ class MonoInvoiceClient(ABC):
         self._token = token
 
     def is_token_expired(self):
-        if self._token is None:
+        if self._token is None or self._token is False or not self._token:
             return True
 
         return Utils.token_expired(self._token)

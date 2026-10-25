@@ -16,6 +16,9 @@ def decode_token(token: str) -> dict:
 
 
 def token_expired(token: str):
+    if not token:
+        return True
+        
     data = decode_token(token)
     expiration = data.get('exp')
     # user = data.get('user')

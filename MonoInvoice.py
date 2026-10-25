@@ -61,17 +61,17 @@ class MonoInvoiceClient(ABC):
         body = {'username': self._config.username, 'password': self._config.password}
         res = requests.post(endpoint, json=body, headers=headers)
         print('RESPONSE:', res.status_code, ' => ', res.content.decode('utf-8'))
-         try:
-			data = res.json()
-		except:
-			data = None
-			
+        
+        try:
+            data = res.json()
+        except:
+            data = None
+            
         # print('STATUS CODE', res.status_code)
         if res.status_code != 200:
             raise Exception(data.get('error', '') if data is not None else 'Unknown error')
             
        
-			
         if data is None:
             raise Exception('Invalid login response.' + 'RESPONSE: ' + res.content)
 

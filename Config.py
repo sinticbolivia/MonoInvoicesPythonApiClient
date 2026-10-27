@@ -13,6 +13,14 @@ class Config(ABC):
         self.password = None
         self.token = None
 
+    def validate(self):
+        if not self.server:
+            raise Exception('Direccion de servidor invalida')
+        if not self.username:
+            raise Exception('Nombre de usuario invalido')
+        if not self.password:
+            raise Exception('Contrasena invalida')
+
     def to_dict(self):
 
         data = copy.deepcopy(self.__dict__)

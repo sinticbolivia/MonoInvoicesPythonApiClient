@@ -24,5 +24,6 @@ def token_expired(token: str):
     # user = data.get('user')
     # token_expire_date = datetime.fromtimestamp(expiration)
     ctime = int(time.time())
+    # print(ctime, ' > ', expiration)
     return ctime > expiration
 

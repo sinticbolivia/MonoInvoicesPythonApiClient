@@ -32,3 +32,5 @@ class FacturaItem(MonoObject):
         self.subtotal = (self.quantity if isinstance(self.quantity, (int, float, complex)) else 0) *\
                         (self.price if isinstance(self.price, (int, float, complex)) else 0)
         self.total = self.subtotal - (self.discount if isinstance(self.discount, (int, float, complex)) else 0)
+        
+        return self.total
